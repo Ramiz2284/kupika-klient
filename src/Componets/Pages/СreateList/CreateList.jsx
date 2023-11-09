@@ -194,7 +194,7 @@ const CreateListPage = () => {
 	const handleSendToWhatsApp = async () => {
 		const listId = await handleCreateList() // Получаем listId прямо здесь
 		if (listId) {
-			const listViewUrl = `http://localhost:3000/list/${listId}`
+			const listViewUrl = `https://kupika-klient.vercel.app/list/${listId}`
 			const message = `Посмотрите список товаров: ${listViewUrl}`
 			const whatsappMessageUrl = `https://wa.me/?text=${encodeURIComponent(
 				message
