@@ -155,7 +155,7 @@ const MyListsPage = () => {
 										className='btn'
 										onClick={() => handleSendToWhatsApp(list._id)}
 									>
-										Отправить весь в WhatsApp
+										Отправить весь список в WhatsApp
 									</button>
 									<button
 										className='btn'

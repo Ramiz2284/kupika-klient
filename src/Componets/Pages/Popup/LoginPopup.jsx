@@ -35,10 +35,7 @@ const LoginPopup = ({ onClose }) => {
 	const handleSubmit = async e => {
 		e.preventDefault()
 
-		// Отправляем данные на сервер
 		try {
-			// Проверяем ответ сервера
-
 			// Отправляем данные на сервер для входа
 			const loginResponse = await fetch(
 				'https://kupika-server-d3637da1ab88.herokuapp.com/api/users/login',
@@ -66,7 +63,6 @@ const LoginPopup = ({ onClose }) => {
 
 				// Перенаправляем пользователя
 				onClose()
-				navigate('/')
 			} else {
 				window.confirm('Ошибка ЛОГИН или ПАРОЛЯ')
 			}
