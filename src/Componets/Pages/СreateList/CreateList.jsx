@@ -22,9 +22,6 @@ const CreateListPage = () => {
 			0
 		)
 		setTotal(totalSum)
-		if (endOfListRef.current) {
-			endOfListRef.current.scrollIntoView({ behavior: 'smooth' })
-		}
 	}, [items])
 
 	const handleItemChange = (index, field, value) => {
@@ -48,6 +45,7 @@ const CreateListPage = () => {
 			...items,
 			{ photo: '', name: '', quantity: '', price: '', photoPreview: '' },
 		])
+		endOfListRef.current.scrollIntoView({ behavior: 'smooth' })
 	}
 
 	const uploadPhoto = async file => {

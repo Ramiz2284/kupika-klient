@@ -9,6 +9,7 @@ const MyListsPage = () => {
 	const { user } = useSelector(state => state.auth)
 	const userEmail = user?.email
 	const [openedListId, setOpenedListId] = useState(null)
+	const [selectedItems, setSelectedItems] = useState({})
 
 	useEffect(() => {
 		const fetchLists = async () => {
@@ -37,6 +38,7 @@ const MyListsPage = () => {
 		const response = await fetch(
 			`https://kupika-server-d3637da1ab88.herokuapp.com/api/list/items?${params}`
 		)
+
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`)
 		}
@@ -48,6 +50,7 @@ const MyListsPage = () => {
 			if (openedListId === list._id) {
 				// Если нажимаем на уже открытый список, закрываем его
 				setOpenedListId(null)
+
 				setLists(
 					lists.map(l => (l._id === list._id ? { ...l, items: undefined } : l))
 				)
@@ -92,6 +95,42 @@ const MyListsPage = () => {
 		}
 	}
 
+	const handleSelectItem = (event, itemId) => {
+		setSelectedItems({
+			...selectedItems,
+			[itemId]: event.target.checked,
+		})
+	}
+
+	const handleSendToWhatsApp = async listId => {
+		// Эта функция отправляет весь список
+		const listViewUrl = `https://kupika-klient.vercel.app/list/${listId}`
+		const message = `Посмотрите список товаров: ${listViewUrl}`
+		const whatsappMessageUrl = `https://wa.me/?text=${encodeURIComponent(
+			message
+		)}`
+		window.open(whatsappMessageUrl, '_blank')
+	}
+
+	const handleSendSelectedToWhatsApp = async () => {
+		// Эта функция отправляет только выбранные товары
+		const selectedIds = Object.keys(selectedItems).filter(
+			id => selectedItems[id]
+		)
+		if (selectedIds.length > 0) {
+			const selectedItemsUrl = `https://kupika-klient.vercel.app/selected-items/${selectedIds.join(
+				','
+			)}`
+			const message = `Посмотрите выбранные товары: ${selectedItemsUrl}`
+			const whatsappMessageUrl = `https://wa.me/?text=${encodeURIComponent(
+				message
+			)}`
+			window.open(whatsappMessageUrl, '_blank')
+		} else {
+			console.error('Нет выделенных товаров для отправки')
+		}
+	}
+
 	return (
 		<div className={styles.myListsPage}>
 			<h1 className={styles.myListsTitle}>Мои списки</h1>
@@ -109,15 +148,28 @@ const MyListsPage = () => {
 								>
 									<FontAwesomeIcon icon={faTrash} />
 								</button>
-								{/* Кнопка для редактирования списка */}
-								{/* <button onClick={() => navigateToEditPage(list._id)}>
-                Редактировать
-              </button> */}
 							</div>
 							{openedListId === list._id && list.items && (
 								<div className={styles.itemsContainer}>
+									<button
+										className='btn'
+										onClick={() => handleSendToWhatsApp(list._id)}
+									>
+										Отправить весь в WhatsApp
+									</button>
+									<button
+										className='btn'
+										onClick={handleSendSelectedToWhatsApp}
+									>
+										Отправить выбранные в WhatsApp
+									</button>
 									{list.items.map((item, itemIndex) => (
 										<div key={itemIndex} className={styles.itemEntry}>
+											<input
+												type='checkbox'
+												checked={selectedItems[item._id] || false}
+												onChange={e => handleSelectItem(e, item._id)}
+											/>
 											<div className={styles.createListPagePhotoWrap}>
 												<div>
 													<img

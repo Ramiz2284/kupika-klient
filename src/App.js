@@ -5,6 +5,7 @@ import Home from './Componets/Pages/Home/Home'
 import ListpageLink from './Componets/Pages/ListpageLink/ListpageLink'
 import MyListsPage from './Componets/Pages/MyListsPage/MyListsPage'
 import RegistrationPage from './Componets/Pages/Registration/RegistrationPage'
+import SelectedItemsPage from './Componets/Pages/SelectedItemsPage/SelectedItemsPage'
 import CreateListPage from './Componets/Pages/СreateList/CreateList'
 import './Styles/main.sass'
 
@@ -20,6 +21,10 @@ function App() {
 						<Route path='/register' element={<RegistrationPage />} />
 						<Route path='/my-list' element={<MyListsPage />} />
 						<Route path='/list/:listId' element={<ListpageLink />} />
+						<Route
+							path='/selected-items/:itemIds'
+							element={<SelectedItemsPage />}
+						/>
 					</Routes>
 				</div>
 			</div>
