@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-	baseURL: 'https://kupika-server-d3637da1ab88.herokuapp.com/',
+	baseURL: 'https://kupika-server-d3637da1ab88.herokuapp.com',
 })
 
 instance.interceptors.request.use(config => {

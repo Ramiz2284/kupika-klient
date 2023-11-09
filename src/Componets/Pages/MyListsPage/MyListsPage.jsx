@@ -14,7 +14,7 @@ const MyListsPage = () => {
 		const fetchLists = async () => {
 			try {
 				const response = await fetch(
-					`https://kupika-server-d3637da1ab88.herokuapp.com//api/list/${userEmail}`
+					`https://kupika-server-d3637da1ab88.herokuapp.com/api/list/${userEmail}`
 				)
 				if (!response.ok) {
 					throw new Error(`HTTP error! status: ${response.status}`)
@@ -35,7 +35,7 @@ const MyListsPage = () => {
 		const params = new URLSearchParams({ ids: itemIds.join(',') })
 
 		const response = await fetch(
-			`https://kupika-server-d3637da1ab88.herokuapp.com//api/list/items?${params}`
+			`https://kupika-server-d3637da1ab88.herokuapp.com/api/list/items?${params}`
 		)
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`)
@@ -76,7 +76,7 @@ const MyListsPage = () => {
 		if (isConfirmed) {
 			try {
 				const response = await fetch(
-					`https://kupika-server-d3637da1ab88.herokuapp.com//api/list/${listId}`,
+					`https://kupika-server-d3637da1ab88.herokuapp.com/api/list/${listId}`,
 					{
 						method: 'DELETE',
 					}
@@ -121,7 +121,7 @@ const MyListsPage = () => {
 											<div className={styles.createListPagePhotoWrap}>
 												<div>
 													<img
-														src={`https://kupika-server-d3637da1ab88.herokuapp.com/${item.photo}`}
+														src={`https://kupika-server-d3637da1ab88.herokuapp.com${item.photo}`}
 														alt='Preview'
 														className={styles.photoPreview}
 													/>

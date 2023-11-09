@@ -41,7 +41,7 @@ const LoginPopup = ({ onClose }) => {
 
 			// Отправляем данные на сервер для входа
 			const loginResponse = await fetch(
-				'https://kupika-server-d3637da1ab88.herokuapp.com//api/users/login',
+				'https://kupika-server-d3637da1ab88.herokuapp.com/api/users/login',
 				{
 					method: 'POST',
 					headers: {
