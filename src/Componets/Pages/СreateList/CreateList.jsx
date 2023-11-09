@@ -315,8 +315,8 @@ const CreateListPage = () => {
 							>
 								{item.saved ? 'Готово' : 'Сохранить'}
 							</button>
+							<div ref={endOfListRef} />
 						</div>
-						<div ref={endOfListRef} />
 					</div>
 				))}
 			</div>
