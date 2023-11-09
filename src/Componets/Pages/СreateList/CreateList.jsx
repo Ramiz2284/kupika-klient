@@ -55,10 +55,13 @@ const CreateListPage = () => {
 		formData.append('photo', file)
 
 		try {
-			const response = await fetch('http://localhost:5000/api/items/upload', {
-				method: 'POST',
-				body: formData,
-			})
+			const response = await fetch(
+				'process.env.REACT_APP_HEROKU/api/items/upload',
+				{
+					method: 'POST',
+					body: formData,
+				}
+			)
 
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`)
@@ -101,10 +104,13 @@ const CreateListPage = () => {
 		formData.append('photo', photoUrl)
 
 		try {
-			const response = await fetch('http://localhost:5000/api/item/newitem', {
-				method: 'POST',
-				body: formData,
-			})
+			const response = await fetch(
+				'process.env.REACT_APP_HEROKU/api/item/newitem',
+				{
+					method: 'POST',
+					body: formData,
+				}
+			)
 
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`)
@@ -160,13 +166,16 @@ const CreateListPage = () => {
 		}
 
 		try {
-			const response = await fetch('http://localhost:5000/api/list/listsave', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(listData),
-			})
+			const response = await fetch(
+				'process.env.REACT_APP_HEROKU/api/list/listsave',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(listData),
+				}
+			)
 
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`)
@@ -209,9 +218,12 @@ const CreateListPage = () => {
 	}
 	const deleteItemFromServer = async itemId => {
 		try {
-			const response = await fetch(`http://localhost:5000/api/item/${itemId}`, {
-				method: 'DELETE', // Используйте метод DELETE для удаления
-			})
+			const response = await fetch(
+				`process.env.REACT_APP_HEROKU/api/item/${itemId}`,
+				{
+					method: 'DELETE', // Используйте метод DELETE для удаления
+				}
+			)
 
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`)

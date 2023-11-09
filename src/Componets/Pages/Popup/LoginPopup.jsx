@@ -41,7 +41,7 @@ const LoginPopup = ({ onClose }) => {
 
 			// Отправляем данные на сервер для входа
 			const loginResponse = await fetch(
-				'http://localhost:5000/api/users/login',
+				'process.env.REACT_APP_HEROKU/api/users/login',
 				{
 					method: 'POST',
 					headers: {

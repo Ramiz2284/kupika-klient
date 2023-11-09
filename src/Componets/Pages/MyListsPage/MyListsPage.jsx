@@ -14,7 +14,7 @@ const MyListsPage = () => {
 		const fetchLists = async () => {
 			try {
 				const response = await fetch(
-					`http://localhost:5000/api/list/${userEmail}`
+					`process.env.REACT_APP_HEROKU/api/list/${userEmail}`
 				)
 				if (!response.ok) {
 					throw new Error(`HTTP error! status: ${response.status}`)
@@ -35,7 +35,7 @@ const MyListsPage = () => {
 		const params = new URLSearchParams({ ids: itemIds.join(',') })
 
 		const response = await fetch(
-			`http://localhost:5000/api/list/items?${params}`
+			`process.env.REACT_APP_HEROKU/api/list/items?${params}`
 		)
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`)
@@ -76,7 +76,7 @@ const MyListsPage = () => {
 		if (isConfirmed) {
 			try {
 				const response = await fetch(
-					`http://localhost:5000/api/list/${listId}`,
+					`process.env.REACT_APP_HEROKU/api/list/${listId}`,
 					{
 						method: 'DELETE',
 					}
@@ -121,7 +121,7 @@ const MyListsPage = () => {
 											<div className={styles.createListPagePhotoWrap}>
 												<div>
 													<img
-														src={`http://localhost:5000${item.photo}`}
+														src={`process.env.REACT_APP_HEROKU${item.photo}`}
 														alt='Preview'
 														className={styles.photoPreview}
 													/>

@@ -47,7 +47,7 @@ const RegistrationPage = () => {
 			alert("Passwords don't match!")
 			return
 		}
-		const registerUrl = 'http://localhost:5000/api/users/register'
+		const registerUrl = 'process.env.REACT_APP_HEROKU/api/users/register'
 
 		// Формируем объект данных для отправки на сервер
 		const userData = {
@@ -72,7 +72,7 @@ const RegistrationPage = () => {
 			if (registerResponse.ok) {
 				// Отправляем данные на сервер для входа
 				const loginResponse = await fetch(
-					'http://localhost:5000/api/users/login',
+					'process.env.REACT_APP_HEROKU/api/users/login',
 					{
 						method: 'POST',
 						headers: {
