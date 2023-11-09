@@ -56,7 +56,7 @@ const CreateListPage = () => {
 
 		try {
 			const response = await fetch(
-				'process.env.REACT_APP_HEROKU/api/items/upload',
+				'https://kupika-server-d3637da1ab88.herokuapp.com//api/items/upload',
 				{
 					method: 'POST',
 					body: formData,
@@ -105,7 +105,7 @@ const CreateListPage = () => {
 
 		try {
 			const response = await fetch(
-				'process.env.REACT_APP_HEROKU/api/item/newitem',
+				'https://kupika-server-d3637da1ab88.herokuapp.com//api/item/newitem',
 				{
 					method: 'POST',
 					body: formData,
@@ -167,7 +167,7 @@ const CreateListPage = () => {
 
 		try {
 			const response = await fetch(
-				'process.env.REACT_APP_HEROKU/api/list/listsave',
+				'https://kupika-server-d3637da1ab88.herokuapp.com//api/list/listsave',
 				{
 					method: 'POST',
 					headers: {
@@ -219,7 +219,7 @@ const CreateListPage = () => {
 	const deleteItemFromServer = async itemId => {
 		try {
 			const response = await fetch(
-				`process.env.REACT_APP_HEROKU/api/item/${itemId}`,
+				`https://kupika-server-d3637da1ab88.herokuapp.com//api/item/${itemId}`,
 				{
 					method: 'DELETE', // Используйте метод DELETE для удаления
 				}

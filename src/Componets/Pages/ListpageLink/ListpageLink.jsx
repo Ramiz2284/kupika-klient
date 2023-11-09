@@ -11,7 +11,7 @@ const ListpageLink = () => {
 			try {
 				// Загружаем список по ID
 				const response = await fetch(
-					`process.env.REACT_APP_HEROKU/api/list/id/${listId}`
+					`https://kupika-server-d3637da1ab88.herokuapp.com//api/list/id/${listId}`
 				)
 				if (!response.ok) {
 					throw new Error(`HTTP error! status: ${response.status}`)
@@ -36,7 +36,7 @@ const ListpageLink = () => {
 							{/* Отображение информации о товаре */}
 							<div className={styles.createListPagePhotoWrap}>
 								<img
-									src={`process.env.REACT_APP_HEROKU${item.photo}`}
+									src={`https://kupika-server-d3637da1ab88.herokuapp.com/${item.photo}`}
 									alt='Preview'
 									className={styles.photoPreview}
 								/>
