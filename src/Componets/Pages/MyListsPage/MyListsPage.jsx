@@ -181,24 +181,33 @@ const MyListsPage = () => {
 											</div>
 
 											<div className={styles.createListPageInputWrap}>
-												<input
-													type='text'
-													placeholder='Название или описание'
-													value={item.name}
-													readOnly
-												/>
-												<input
-													type='number'
-													placeholder='Количество'
-													value={item.quantity}
-													readOnly
-												/>
-												<input
-													type='number'
-													placeholder='Цена'
-													value={item.price}
-													readOnly
-												/>
+												<div className={styles.createListPageInputSpanWrap}>
+													<span>Название или описание</span>
+													<input
+														type='text'
+														placeholder='Название или описание'
+														value={item.name}
+														readOnly
+													/>
+												</div>
+												<div className={styles.createListPageInputSpanWrap}>
+													<span>Количество</span>
+													<input
+														type='number'
+														placeholder='Количество'
+														value={item.quantity}
+														readOnly
+													/>
+												</div>
+												<div className={styles.createListPageInputSpanWrap}>
+													<span>Цена</span>
+													<input
+														type='number'
+														placeholder='Цена'
+														value={item.price}
+														readOnly
+													/>
+												</div>
 											</div>
 										</div>
 									))}
