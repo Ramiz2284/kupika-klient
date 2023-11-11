@@ -36,7 +36,7 @@ const ListpageLink = () => {
 							{/* Отображение информации о товаре */}
 							<div className={styles.createListPagePhotoWrap}>
 								<img
-									src={`https://kupika-server-d3637da1ab88.herokuapp.com${item.photo}`}
+									src={item.photo}
 									alt='Preview'
 									className={styles.photoPreview}
 								/>
