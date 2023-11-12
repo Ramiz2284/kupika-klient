@@ -35,7 +35,7 @@ const SelectedItemsPage = () => {
 						<div key={index} className={styles.itemEntry}>
 							<div className={styles.createListPagePhotoWrap}>
 								<img
-									src={`https://kupika-server-d3637da1ab88.herokuapp.com/${item.photo}`}
+									src={`https://kupika-server-d3637da1ab88.herokuapp.com${item.photo}`}
 									alt='Preview'
 									className={styles.photoPreview}
 								/>

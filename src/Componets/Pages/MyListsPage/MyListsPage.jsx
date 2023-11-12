@@ -173,7 +173,7 @@ const MyListsPage = () => {
 											<div className={styles.createListPagePhotoWrap}>
 												<div>
 													<img
-														src={`https://kupika-server-d3637da1ab88.herokuapp.com/${item.photo}`}
+														src={`https://kupika-server-d3637da1ab88.herokuapp.com${item.photo}`}
 														alt='Preview'
 														className={styles.photoPreview}
 													/>
