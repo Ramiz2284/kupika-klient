@@ -54,7 +54,7 @@ const CreateListPage = () => {
 
 		try {
 			const response = await fetch(
-				'http://157.230.27.197:5000/api/items/upload',
+				'https://157.230.27.197:5000/api/items/upload',
 				{
 					method: 'POST',
 					body: formData,
@@ -103,7 +103,7 @@ const CreateListPage = () => {
 
 		try {
 			const response = await fetch(
-				'http://157.230.27.197:5000/api/item/newitem',
+				'https://157.230.27.197:5000/api/item/newitem',
 				{
 					method: 'POST',
 					body: formData,
@@ -165,7 +165,7 @@ const CreateListPage = () => {
 
 		try {
 			const response = await fetch(
-				'http://157.230.27.197:5000/api/list/listsave',
+				'https://157.230.27.197:5000/api/list/listsave',
 				{
 					method: 'POST',
 					headers: {
@@ -217,7 +217,7 @@ const CreateListPage = () => {
 	const deleteItemFromServer = async itemId => {
 		try {
 			const response = await fetch(
-				`http://157.230.27.197:5000/api/item/${itemId}`,
+				`https://157.230.27.197:5000/api/item/${itemId}`,
 				{
 					method: 'DELETE', // Используйте метод DELETE для удаления
 				}
