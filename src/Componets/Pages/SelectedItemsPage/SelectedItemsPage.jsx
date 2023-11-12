@@ -10,7 +10,7 @@ const SelectedItemsPage = () => {
 		const fetchItems = async ids => {
 			const params = new URLSearchParams({ ids: ids.join(',') })
 			const response = await fetch(
-				`https://157.230.27.197/api/list/items?${params}`
+				`http://157.230.27.197:5000/api/list/items?${params}`
 			)
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`)
@@ -35,7 +35,7 @@ const SelectedItemsPage = () => {
 						<div key={index} className={styles.itemEntry}>
 							<div className={styles.createListPagePhotoWrap}>
 								<img
-									src={`https://157.230.27.197/${item.photo}`}
+									src={`http://157.230.27.197:5000/${item.photo}`}
 									alt='Preview'
 									className={styles.photoPreview}
 								/>

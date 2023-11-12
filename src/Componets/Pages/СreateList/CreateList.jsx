@@ -53,10 +53,13 @@ const CreateListPage = () => {
 		formData.append('photo', file)
 
 		try {
-			const response = await fetch('https://157.230.27.197/api/items/upload', {
-				method: 'POST',
-				body: formData,
-			})
+			const response = await fetch(
+				'http://157.230.27.197:5000/api/items/upload',
+				{
+					method: 'POST',
+					body: formData,
+				}
+			)
 
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`)
@@ -99,10 +102,13 @@ const CreateListPage = () => {
 		formData.append('photo', photoUrl)
 
 		try {
-			const response = await fetch('https://157.230.27.197/api/item/newitem', {
-				method: 'POST',
-				body: formData,
-			})
+			const response = await fetch(
+				'http://157.230.27.197:5000/api/item/newitem',
+				{
+					method: 'POST',
+					body: formData,
+				}
+			)
 
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`)
@@ -158,13 +164,16 @@ const CreateListPage = () => {
 		}
 
 		try {
-			const response = await fetch('https://157.230.27.197/api/list/listsave', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(listData),
-			})
+			const response = await fetch(
+				'http://157.230.27.197:5000/api/list/listsave',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(listData),
+				}
+			)
 
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`)
@@ -208,7 +217,7 @@ const CreateListPage = () => {
 	const deleteItemFromServer = async itemId => {
 		try {
 			const response = await fetch(
-				`https://157.230.27.197/api/item/${itemId}`,
+				`http://157.230.27.197:5000/api/item/${itemId}`,
 				{
 					method: 'DELETE', // Используйте метод DELETE для удаления
 				}
