@@ -11,7 +11,7 @@ const ListpageLink = () => {
 			try {
 				// Загружаем список по ID
 				const response = await fetch(
-					`http://157.230.27.197:5000/api/list/id/${listId}`
+					`https://157.230.27.197:5000/api/list/id/${listId}`
 				)
 				if (!response.ok) {
 					throw new Error(`HTTP error! status: ${response.status}`)
@@ -36,7 +36,7 @@ const ListpageLink = () => {
 							{/* Отображение информации о товаре */}
 							<div className={styles.createListPagePhotoWrap}>
 								<img
-									src={`http://157.230.27.197:5000/${item.photo}`}
+									src={`https://157.230.27.197:5000/${item.photo}`}
 									alt='Preview'
 									className={styles.photoPreview}
 								/>

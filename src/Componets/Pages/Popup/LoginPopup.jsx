@@ -38,7 +38,7 @@ const LoginPopup = ({ onClose }) => {
 		try {
 			// Отправляем данные на сервер для входа
 			const loginResponse = await fetch(
-				'http://157.230.27.197:5000/api/users/login',
+				'https://157.230.27.197:5000/api/users/login',
 				{
 					method: 'POST',
 					headers: {
