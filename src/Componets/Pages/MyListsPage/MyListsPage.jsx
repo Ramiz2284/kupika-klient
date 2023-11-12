@@ -15,7 +15,7 @@ const MyListsPage = () => {
 		const fetchLists = async () => {
 			try {
 				const response = await fetch(
-					`https://157.230.27.197:5000/api/list/${userEmail}`
+					`https://157.230.27.197/api/list/${userEmail}`
 				)
 				if (!response.ok) {
 					throw new Error(`HTTP error! status: ${response.status}`)
@@ -36,7 +36,7 @@ const MyListsPage = () => {
 		const params = new URLSearchParams({ ids: itemIds.join(',') })
 
 		const response = await fetch(
-			`https://157.230.27.197:5000/api/list/items?${params}`
+			`https://157.230.27.197/api/list/items?${params}`
 		)
 
 		if (!response.ok) {
@@ -79,7 +79,7 @@ const MyListsPage = () => {
 		if (isConfirmed) {
 			try {
 				const response = await fetch(
-					`https://157.230.27.197:5000/api/list/${listId}`,
+					`https://157.230.27.197/api/list/${listId}`,
 					{
 						method: 'DELETE',
 					}
@@ -173,7 +173,7 @@ const MyListsPage = () => {
 											<div className={styles.createListPagePhotoWrap}>
 												<div>
 													<img
-														src={`https://157.230.27.197:5000/${item.photo}`}
+														src={`https://157.230.27.197/${item.photo}`}
 														alt='Preview'
 														className={styles.photoPreview}
 													/>
