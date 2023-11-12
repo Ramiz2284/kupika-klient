@@ -10,7 +10,7 @@ const SelectedItemsPage = () => {
 		const fetchItems = async ids => {
 			const params = new URLSearchParams({ ids: ids.join(',') })
 			const response = await fetch(
-				`https://f14e-157-230-27-197.ngrok-free.app:5000/api/list/items?${params}`
+				`https://kupika-server-d3637da1ab88.herokuapp.com/api/list/items?${params}`
 			)
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`)
@@ -35,7 +35,7 @@ const SelectedItemsPage = () => {
 						<div key={index} className={styles.itemEntry}>
 							<div className={styles.createListPagePhotoWrap}>
 								<img
-									src={`https://f14e-157-230-27-197.ngrok-free.app:5000/${item.photo}`}
+									src={`https://kupika-server-d3637da1ab88.herokuapp.com/${item.photo}`}
 									alt='Preview'
 									className={styles.photoPreview}
 								/>

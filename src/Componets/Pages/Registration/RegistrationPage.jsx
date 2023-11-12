@@ -48,7 +48,7 @@ const RegistrationPage = () => {
 			return
 		}
 		const registerUrl =
-			'https://f14e-157-230-27-197.ngrok-free.app:5000/api/users/register'
+			'https://kupika-server-d3637da1ab88.herokuapp.com/api/users/register'
 
 		// Формируем объект данных для отправки на сервер
 		const userData = {
@@ -73,7 +73,7 @@ const RegistrationPage = () => {
 			if (registerResponse.ok) {
 				// Отправляем данные на сервер для входа
 				const loginResponse = await fetch(
-					'https://f14e-157-230-27-197.ngrok-free.app:5000/api/users/login',
+					'https://kupika-server-d3637da1ab88.herokuapp.com/api/users/login',
 					{
 						method: 'POST',
 						headers: {
