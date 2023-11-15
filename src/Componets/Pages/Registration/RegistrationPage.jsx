@@ -47,8 +47,7 @@ const RegistrationPage = () => {
 			alert("Passwords don't match!")
 			return
 		}
-		const registerUrl =
-			'https://kupika-server-d3637da1ab88.herokuapp.com/api/users/register'
+		const registerUrl = 'https://marketlistem.site/api/users/register'
 
 		// Формируем объект данных для отправки на сервер
 		const userData = {
@@ -73,7 +72,7 @@ const RegistrationPage = () => {
 			if (registerResponse.ok) {
 				// Отправляем данные на сервер для входа
 				const loginResponse = await fetch(
-					'https://kupika-server-d3637da1ab88.herokuapp.com/api/users/login',
+					'https://marketlistem.site/api/users/login',
 					{
 						method: 'POST',
 						headers: {

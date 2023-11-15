@@ -11,7 +11,7 @@ const ListpageLink = () => {
 			try {
 				// Загружаем список по ID
 				const response = await fetch(
-					`https://kupika-server-d3637da1ab88.herokuapp.com/api/list/id/${listId}`
+					`https://marketlistem.site/api/list/id/${listId}`
 				)
 				if (!response.ok) {
 					throw new Error(`HTTP error! status: ${response.status}`)
@@ -36,7 +36,7 @@ const ListpageLink = () => {
 							{/* Отображение информации о товаре */}
 							<div className={styles.createListPagePhotoWrap}>
 								<img
-									src={`https://kupika-server-d3637da1ab88.herokuapp.com${item.photo}`}
+									src={`https://marketlistem.site${item.photo}`}
 									alt='Preview'
 									className={styles.photoPreview}
 								/>

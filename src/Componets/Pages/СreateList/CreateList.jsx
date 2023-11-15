@@ -54,7 +54,7 @@ const CreateListPage = () => {
 
 		try {
 			const response = await fetch(
-				'https://kupika-server-d3637da1ab88.herokuapp.com/api/items/upload',
+				'https://marketlistem.site/api/items/upload',
 				{
 					method: 'POST',
 					body: formData,
@@ -103,7 +103,7 @@ const CreateListPage = () => {
 
 		try {
 			const response = await fetch(
-				'https://kupika-server-d3637da1ab88.herokuapp.com/api/item/newitem',
+				'https://marketlistem.site/api/item/newitem',
 				{
 					method: 'POST',
 					body: formData,
@@ -165,7 +165,7 @@ const CreateListPage = () => {
 
 		try {
 			const response = await fetch(
-				'https://kupika-server-d3637da1ab88.herokuapp.com/api/list/listsave',
+				'https://marketlistem.site/api/list/listsave',
 				{
 					method: 'POST',
 					headers: {
@@ -217,7 +217,7 @@ const CreateListPage = () => {
 	const deleteItemFromServer = async itemId => {
 		try {
 			const response = await fetch(
-				`https://kupika-server-d3637da1ab88.herokuapp.com/api/item/${itemId}`,
+				`https://marketlistem.site/api/item/${itemId}`,
 				{
 					method: 'DELETE', // Используйте метод DELETE для удаления
 				}
