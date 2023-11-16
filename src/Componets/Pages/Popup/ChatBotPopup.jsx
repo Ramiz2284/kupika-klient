@@ -31,8 +31,8 @@ const ChatbotPopup = ({ isOpen, onClose }) => {
 				throw new Error('Error communicating with the server')
 			}
 
-			const { reply } = await response.json()
-			setMessages(messages => [...messages, { sender: 'bot', text: reply }])
+			const { replies } = await response.json()
+			setMessages(messages => [...messages, { sender: 'bot', text: replies }])
 		} catch (error) {
 			console.error('Error:', error)
 		}
