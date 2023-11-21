@@ -14,6 +14,7 @@ const MyListsPage = () => {
 	// Добавляем состояние для отслеживания редактируемого элемента
 	const [isEditing, setIsEditing] = useState(null)
 	const [editingItem, setEditingItem] = useState({})
+	const [photoPreview, setPhotoPreview] = useState({})
 
 	useEffect(() => {
 		const fetchLists = async () => {
@@ -189,6 +190,14 @@ const MyListsPage = () => {
 		const formData = new FormData()
 		formData.append('photo', file)
 
+		if (file) {
+			const photoPreviewUrl = URL.createObjectURL(file)
+			setPhotoPreview(prev => ({
+				...prev,
+				[itemId]: photoPreviewUrl,
+			}))
+		}
+
 		try {
 			const response = await fetch(
 				`https://marketlistem.site/api/items/upload`,
@@ -248,7 +257,6 @@ const MyListsPage = () => {
 
 		// Фильтруем только новые товары, которые еще не были сохранены (не имеют _id)
 		const newItems = listToSave.items.filter(item => !item._id)
-		console.log(newItems)
 
 		// Если есть новые товары для сохранения
 		if (newItems.length > 0) {
@@ -257,12 +265,10 @@ const MyListsPage = () => {
 					// Сохраняем каждый новый товар
 					const newItemId = await saveItem(userEmail)
 					if (newItemId) {
-						console.log(newItemId)
 						// Если товар успешно сохранен, обновляем его _id в состоянии
 						item._id = newItemId
 						// Добавляем _id в массив ID товаров списка
 						listToSave.itemIds.push(newItemId)
-						console.log(listToSave)
 					} else {
 						// Обработка ошибок, если _id не был получен
 						console.error('Ошибка при сохранении нового товара')
@@ -407,9 +413,9 @@ const MyListsPage = () => {
 															onClick={() => triggerFileInput(item._id)} // Вызов triggerFileInput при клике на div
 															style={{ cursor: 'pointer' }} // Опционально, чтобы показать что элемент кликабельный
 														>
-															{editingItem.photo ? (
+															{photoPreview[item._id] ? (
 																<img
-																	src={`https://marketlistem.site${editingItem.photo}`}
+																	src={photoPreview[item._id]}
 																	alt='Preview'
 																	className={styles.photoPreview}
 																/>
@@ -538,20 +544,22 @@ const MyListsPage = () => {
 													)}
 												</div>
 											</div>
-											<button
-												className='btn handleAddItemToListBtn'
-												onClick={() => handleAddItemToList(list._id)}
-											>
-												Добавить
-											</button>
-											<button
-												className='btn handleAddItemToListBtnSave'
-												onClick={() => handleSaveListChanges(list._id)}
-											>
-												Сохранить
-											</button>
 										</div>
 									))}
+									<div className={styles.editListBtnWrap}>
+										<button
+											className='btn handleAddItemToListBtn'
+											onClick={() => handleAddItemToList(list._id)}
+										>
+											Добавить в список
+										</button>
+										<button
+											className='btn handleAddItemToListBtnSave'
+											onClick={() => handleSaveListChanges(list._id)}
+										>
+											Сохранить список
+										</button>
+									</div>
 								</div>
 							)}
 						</div>
