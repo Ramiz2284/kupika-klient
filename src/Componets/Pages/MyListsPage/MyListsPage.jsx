@@ -192,6 +192,7 @@ const MyListsPage = () => {
 		formData.append('photo', file)
 
 		if (file) {
+			setIsUploading(true)
 			const photoPreviewUrl = URL.createObjectURL(file)
 			setPhotoPreview(prev => ({
 				...prev,
