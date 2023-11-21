@@ -15,6 +15,7 @@ const MyListsPage = () => {
 	const [isEditing, setIsEditing] = useState(null)
 	const [editingItem, setEditingItem] = useState({})
 	const [photoPreview, setPhotoPreview] = useState({})
+	const [isUploading, setIsUploading] = useState(false)
 
 	useEffect(() => {
 		const fetchLists = async () => {
@@ -214,7 +215,9 @@ const MyListsPage = () => {
 
 			// Обновляем состояние редактируемого элемента с новой фотографией
 			setEditingItem(prev => ({ ...prev, photo: photoUrl }))
+			setIsUploading(false)
 		} catch (error) {
+			setIsUploading(false)
 			console.error('Ошибка при изменении фотографии:', error)
 		}
 	}
@@ -524,9 +527,11 @@ const MyListsPage = () => {
 															<button
 																className='btn'
 																onClick={() => handleSaveClick(item._id)}
+																disabled={isUploading}
 															>
 																Сохранить
 															</button>
+															{isUploading && <div>Загрузка...</div>}
 															<button
 																className='btn'
 																onClick={() => setIsEditing(null)}
