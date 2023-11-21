@@ -1,10 +1,11 @@
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import styles from './MyListsPage.module.sass'
 
 const MyListsPage = () => {
+	const fileInputRefs = useRef({})
 	const [lists, setLists] = useState([])
 	const { user } = useSelector(state => state.auth)
 	const userEmail = user?.email
@@ -348,6 +349,11 @@ const MyListsPage = () => {
 		}
 	}
 
+	const triggerFileInput = index => {
+		// Программно вызываем событие click на соответствующем элементе input
+		fileInputRefs.current[index].click()
+	}
+
 	return (
 		<div className={styles.myListsPage}>
 			<h1 className={styles.myListsTitle}>Мои списки</h1>
@@ -390,13 +396,31 @@ const MyListsPage = () => {
 
 											{isEditing === item._id ? (
 												<>
-													<input
-														type='file'
-														onChange={event =>
-															handlePhotoChange(event, item._id)
-														}
-														style={{ display: 'block' }} // Пример стиля для отображения
-													/>
+													<div className={styles.createListPagePhotoWrap}>
+														<input
+															type='file'
+															ref={el => (fileInputRefs.current[item._id] = el)} // Ссылка на input для программного вызова
+															onChange={e => handlePhotoChange(e, item._id)} // Вызов handlePhotoChange при изменении
+															style={{ display: 'none' }} // Скрытие input элемента
+														/>
+														<div
+															onClick={() => triggerFileInput(item._id)} // Вызов triggerFileInput при клике на div
+															style={{ cursor: 'pointer' }} // Опционально, чтобы показать что элемент кликабельный
+														>
+															{editingItem.photo ? (
+																<img
+																	src={`https://marketlistem.site${editingItem.photo}`}
+																	alt='Preview'
+																	className={styles.photoPreview}
+																/>
+															) : (
+																<div>
+																	<span>Выберите изображение </span>
+																	<span>+</span>
+																</div>
+															)}
+														</div>
+													</div>
 												</>
 											) : (
 												<div className={styles.createListPagePhotoWrap}>
