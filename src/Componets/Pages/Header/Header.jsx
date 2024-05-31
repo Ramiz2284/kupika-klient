@@ -78,9 +78,15 @@ const Header = () => {
 					}`}
 				>
 					<ul className={styles.navList}>
-						<li className={styles.navItem}>Главная</li>
-						<li className={styles.navItem}>О нас</li>
-						<li className={styles.navItem}>Контакты</li>
+						<Link to='/'>
+							<li className={styles.navItem}>Главная</li>
+						</Link>
+						<Link to='/aboutus'>
+							<li className={styles.navItem}>О нас</li>
+						</Link>
+						<Link to='/contacts'>
+							<li className={styles.navItem}>Контакты</li>
+						</Link>
 					</ul>
 				</nav>
 				<button className={styles.profileButton} onClick={handleLogoutClick}>
