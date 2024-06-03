@@ -13,7 +13,7 @@ const Home = () => {
 
 	return (
 		<div className={styles.container}>
-			<h1>Список покупок для магазина</h1>
+			<h1 className={styles.homeH1}>Список покупок для магазина</h1>
 			<Link className={styles.Linkbutton} to='/create-list'>
 				<button className={styles.button}>Создать список</button>
 			</Link>
