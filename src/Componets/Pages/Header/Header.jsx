@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import HeaderLogo from '../../img/HeaderLogo.png'
+import HeaderLogo from '../../img/HeaderLogo.jpeg'
 import LoginPopup from '../Popup/LoginPopup'
 import styles from './Header.module.sass'
 

@@ -13,6 +13,7 @@ const Home = () => {
 
 	return (
 		<div className={styles.container}>
+			<h1>Список покупок для магазина</h1>
 			<Link className={styles.Linkbutton} to='/create-list'>
 				<button className={styles.button}>Создать список</button>
 			</Link>
@@ -21,7 +22,7 @@ const Home = () => {
 			</Link>
 
 			<button className={styles.button} onClick={openChatbot}>
-				Спросить у бота
+				Спросить у ChatGPT
 			</button>
 			<ChatbotPopup isOpen={isChatbotOpen} onClose={closeChatbot} />
 			<a
@@ -31,7 +32,7 @@ const Home = () => {
 				rel='noopener noreferrer'
 			>
 				<button className={styles.button}>
-					<FaWhatsapp /> Копченная рыба в Анталии
+					<FaWhatsapp /> Копченная рыба и колбаса в Анталии
 				</button>
 			</a>
 			<p className={styles.explanation}>
