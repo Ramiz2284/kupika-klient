@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { FaWhatsapp } from 'react-icons/fa'
+import { useEffect, useState } from 'react'
+// icons removed — using plain text buttons for clean layout
 import { Link } from 'react-router-dom'
+// FishIcon removed
 import ChatbotPopup from '../Popup/ChatBotPopup'
 import styles from './Home.module.sass'
 
 // Importing local images
-import image3 from '../../img/dorado.jpg'
-import image2 from '../../img/mackerel.jpg'
-import image1 from '../../img/somon.jpg'
+import image3 from '../../img/kvas.jpg'
+import image2 from '../../img/nor-somon.jpg'
+import image1 from '../../img/tr-somon.jpg'
 
 const Home = () => {
 	const [isChatbotOpen, setIsChatbotOpen] = useState(false)
@@ -48,24 +49,25 @@ const Home = () => {
 	const images = [
 		{
 			src: image1,
-			caption: 'Лосось',
+			caption: 'Турецкий лосось 1000 лир/кг',
 			orderText:
-				'Приветствую, я хочу заказать лосось малосольный холодного копчения',
+				'Приветствую, я хочу заказать турецкий лосось (форель) малосольный холодного копчения',
 		},
 		{
 			src: image2,
-			caption: 'Скумбрия',
-			orderText: 'Приветствую, я хочу заказать скумбрию холодного копчения',
+			caption: 'Норвежский лосось 1200 лир/кг',
+			orderText:
+				'Приветствую, я хочу заказать норвежский лосось холодного копчения',
 		},
 		{
 			src: image3,
-			caption: 'Дорадо',
-			orderText: 'Приветствую, я хочу заказать дорадо горячего копчения',
+			caption: 'Квас медовый 1,5 л 100 лир',
+			orderText: 'Приветствую, я хочу заказать квас медовый',
 		},
 	]
 
 	const handleImageClick = orderText => {
-		const whatsappUrl = `https://wa.me/+905444558407?text=${encodeURIComponent(
+		const whatsappUrl = `https://wa.me/905444558407?text=${encodeURIComponent(
 			orderText
 		)}`
 		window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
@@ -74,26 +76,38 @@ const Home = () => {
 	return (
 		<div className={styles.container}>
 			<h1 className={styles.homeH1}>Список покупок для магазина</h1>
-			<Link className={styles.Linkbutton} to='/create-list'>
-				<button className={styles.button}>Создать список</button>
-			</Link>
-			<Link className={styles.Linkbutton} to='/my-list'>
-				<button className={styles.button}>Ваши списки</button>
-			</Link>
+			<div className={styles.actions}>
+				<Link
+					to='/create-list'
+					role='button'
+					className={`${styles.button} ${styles.primary}`}
+				>
+					Создать список
+				</Link>
+				<Link
+					to='/my-list'
+					role='button'
+					className={`${styles.button} ${styles.secondary}`}
+				>
+					Ваши списки
+				</Link>
+			</div>
 
-			<button className={styles.button} onClick={openChatbot}>
+			<button
+				className={`${styles.button} ${styles.chatButton}`}
+				onClick={openChatbot}
+			>
 				Спросить у ChatGPT
 			</button>
 			<ChatbotPopup isOpen={isChatbotOpen} onClose={closeChatbot} />
 			<a
-				className={styles.Linkbutton}
-				href='https://wa.me/+905444558407'
+				href='https://wa.me/905444558407'
 				target='_blank'
 				rel='noopener noreferrer'
+				role='button'
+				className={`${styles.button} ${styles.whatsapp}`}
 			>
-				<button className={styles.button}>
-					<FaWhatsapp /> Копченная рыба и колбаса в Анталии
-				</button>
+				Копченная рыба и колбаса в Анталии
 			</a>
 			<p className={styles.explanation}>
 				Нажмите на эту кнопку, чтобы перейти в WhatsApp и просмотреть наш
@@ -111,8 +125,13 @@ const Home = () => {
 						<img
 							src={image.src}
 							alt={image.caption}
+							loading='lazy'
 							onClick={() => handleImageClick(image.orderText)}
 							style={{ cursor: 'pointer' }}
+							onError={e => {
+								e.currentTarget.src =
+									'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
+							}}
 						/>
 						<p>{image.caption}</p>
 					</div>

@@ -1,40 +1,184 @@
-// HomePage.module.scss
+// Mobile-first Home page styles — clean, minimal and sea-themed
+@import '../../../Styles/_variables.sass'
+
 .container
-  display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  height: 100% // Высота вьюпорта, чтобы центрировать кнопки вертикально
+  max-width: $max-width
+  margin: 0 auto
+  min-height: 100vh
   padding: 20px
-  .homeH1
+  background-color: $bg-color
+  color: $text-color
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
+  text-align: center
+
+  // add comfortable vertical spacing for mobile
+  padding-top: 24px
+  padding-bottom: 40px
+
+  // compact top controls removed (header handled globally)
+
+  // simplified button styles (no icons)
+  .whatsapp,
+  .chatButton,
+  .primary,
+  .secondary
+    display: block
+    width: 92%
+    max-width: 360px
+    margin: 12px auto
+    padding: 14px 18px
+    border-radius: $button-radius
+    font-weight: 600
     text-align: center
-    font-size: 1.8rem
-.Linkbutton
-  width: 100%
-.button
-  background-color: #3498db
-  color: white
-  border: none
-  padding: 10px 20px
-  margin: 10px 0
-  cursor: pointer
-  transition: background-color 0.3s
-  width: 100% // Фиксированная ширина для всех кнопок
-  font-size: 1.3rem
 
-  &:hover
-    background-color: #2980b9
+  .primary
+    background: linear-gradient(180deg, $sea-blue, $sea-blue-2)
+    color: #fff
 
-.explanation
-  text-align: center
-.homeH2
-  font-size: 23px
-.homeImages
-  display: flex
-  gap: 10px // Adjust spacing between images as needed
-  margin-top: 20px // Adjust the margin to suit your layout
-  text-align: center
+  .secondary
+    background: $sea-blue
+    color: #fff
 
-  img
-    max-width: 100px
-    max-height: 80px
+  .chatButton
+    background: linear-gradient(180deg, $sea-blue, $turquoise)
+    color: #fff
+
+  .whatsapp
+    background: linear-gradient(180deg, $turquoise, $accent)
+    color: #fff
+
+  // Hero / title
+  .hero
+    width: 100%
+    text-align: center
+    margin: 8px 0 20px 0
+
+    .homeH1
+      font-weight: 700
+      font-size: clamp(1.6rem, 6.8vw, 2rem) // адаптивный
+      line-height: 1.05
+      margin: 10px 0 18px
+      text-align: center
+
+    .homeH2
+      font-size: 1rem
+      color: $muted-text
+      margin: 0
+
+  // Buttons group — large, rounded, comfortable for thumb
+  .actions
+    width: 100%
+    display: flex
+    justify-content: center
+    gap: 12px
+    margin-bottom: 18px
+
+    .Linkbutton
+      width: 100%
+
+      .button
+        display: inline-flex
+        align-items: center
+        justify-content: center
+        min-height: 56px // гарантированный touch target
+        padding: 12px 20px
+        border-radius: 14px
+        text-align: center
+        white-space: normal // чтобы текст мог переноситься
+        line-height: 1.15
+        font-size: 1.05rem
+        border: none
+        cursor: pointer
+        transition: transform 0.14s ease, box-shadow 0.14s ease
+
+        &.primary
+          background: linear-gradient(180deg, $sea-blue, $sea-blue-2)
+          color: #fff
+          box-shadow: 0 10px 24px rgba(11,58,75,0.12)
+
+        &.secondary
+          background: $muted-color
+          color: $text-color
+          box-shadow: $card-shadow
+
+        &:active
+          transform: translateY(1px)
+
+  // Single full-width action (mobile stacked)
+  .fullAction
+    margin-top: 8px
+    .button
+      width: 100%
+      padding: 14px
+      border-radius: $button-radius
+
+  .explanation
+    color: $muted-text
+    font-size: 0.92rem
+    margin: 10px 0 18px 0
+
+  // Catalog — grid of cards with soft shadows and rounded corners
+  .catalog
+    width: 100%
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 12px
+    margin-top: 6px
+
+    .card
+      background: #fff
+      border-radius: 12px
+      overflow: hidden
+      box-shadow: $card-shadow
+      display: flex
+      flex-direction: column
+      align-items: center
+      padding: 8px
+
+      img
+        width: 100%
+        height: 110px
+        object-fit: cover
+        border-radius: 8px
+        box-shadow: 0 8px 20px rgba(11,58,75,0.06)
+
+      .meta
+        width: 100%
+        padding: 8px 6px
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+        .title
+          font-weight: 600
+          font-size: 0.95rem
+
+        .price
+          font-weight: 700
+          color: $accent
+          font-size: 0.95rem
+
+  // вместо жесткой рамки / stroke
+  .button
+    border: none // убрать чёрную рамку
+    outline: none
+    -webkit-appearance: none
+    box-shadow: 0 8px 20px rgba(11,58,75,0.08) // мягкая тень
+    transition: transform .12s ease, box-shadow .12s ease
+    &:active
+      transform: translateY(1px)
+
+    // для подсветки при фокусе (доступность)
+    &:focus-visible
+      box-shadow: 0 8px 20px rgba(11,58,75,0.12), 0 0 0 4px rgba(23,143,166,0.14)
+
+  // Larger carousel / showcase for desktop (keeps mobile-first simple)
+  @media (min-width: 600px)
+    .container
+      padding: 28px
+
+    .actions
+      grid-template-columns: 1fr 1fr 1fr
+
+    .catalog
+      grid-template-columns: repeat(3, 1fr)

@@ -1,6 +1,5 @@
-import React from 'react'
 import { Col, Container, Image, Row } from 'react-bootstrap'
-import aboutImg from '../../img/_c9874879-e673-48db-a791-432048928984.jpeg'
+import aboutImg from '../../img/HeaderLogo.jpeg'
 import './aboutUs.sass' // Импорт файла стилей
 
 const AboutUs = () => {
